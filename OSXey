@@ -90,7 +90,7 @@ mem=$(sysctl -n hw.memsize)
 mem="$((mem/1024/1024/1024)) GB" # B => KB => MB => GB
 
 # ==DISK==
-disk=`df | head -2 | tail -1 | awk '{print $5}'`
+disk=`df -l | sed -e /^Filesystem/d | awk '{print $5}'`
 
 # Colors Variables
 red="1"
